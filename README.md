@@ -15,11 +15,11 @@ This is short desription about how to use animeted_graph
 
 
 
-  **-f FILE, --conf_file FILE **              Specify config file.
+  **-f FILE, --conf_file FILE**              Specify config file.
 
-  **-t TIMEFORMAT, --TimeFormat **			  Specify timeformat which is udes in data file (default:"[%Y/%m/%d %H:%M:%S]").
+  **-t TIMEFORMAT, --TimeFormat**			  Specify timeformat which is udes in data file (default:"[%Y/%m/%d %H:%M:%S]").
                         
- ** -x XMIN, --Xmin XMIN  	**			  Specify  minimal x value, 
+ **-x XMIN, --Xmin XMIN**			  Specify  minimal x value, 
   can be int/float value or keyword:min (default:min).
 
   **-X XMAX, --Xmax XMAX  **				  Specify  maximal x value, can be int/float value or keyword:max (default:max).
@@ -72,7 +72,7 @@ Example of config file:
   #This is signle line comment
 
   # Graph animation : Simple Effect
-  
+
   # Example config file
   
   Timeformat [%Y/%m/%d %H:%M:%S]
