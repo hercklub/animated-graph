@@ -1,0 +1,359 @@
+.\" Man page generated from reStructuredText.
+.
+.TH "ANIMATED_GRAPH" "1" "May 13, 2015" "0.0.1" "Animated_graph"
+.SH NAME
+animated_graph \- Animated_graph Documentation
+.
+.nr rst2man-indent-level 0
+.
+.de1 rstReportMargin
+\\$1 \\n[an-margin]
+level \\n[rst2man-indent-level]
+level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
+-
+\\n[rst2man-indent0]
+\\n[rst2man-indent1]
+\\n[rst2man-indent2]
+..
+.de1 INDENT
+.\" .rstReportMargin pre:
+. RS \\$1
+. nr rst2man-indent\\n[rst2man-indent-level] \\n[an-margin]
+. nr rst2man-indent-level +1
+.\" .rstReportMargin post:
+..
+.de UNINDENT
+. RE
+.\" indent \\n[an-margin]
+.\" old: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.nr rst2man-indent-level -1
+.\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
+.in \\n[rst2man-indent\\n[rst2man-indent-level]]u
+..
+.SH PROGRAM DEPENDENCIES:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+python 3
+.IP \(bu 2
+gnuplot
+.IP \(bu 2
+ffmpeg
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SH CONTENTS:
+.SS Animated_graph Tutorial
+.sp
+This is short desription about how to use animeted_graph
+.INDENT 0.0
+.TP
+.B \fBusage\fP: animated_graph [\-h] [\-f FILE] [\-t TIMEFORMAT] [\-x XMIN] [\-X XMAX]
+.INDENT 7.0
+.INDENT 3.5
+[\-y YMIN] [\-Y YMAX] [\-S SPEED] [\-T TIME] [\-F FPS]
+[\-l LEGEND] [\-g GNUPLOTPARAMS [GNUPLOTPARAMS ...]]
+[\-e EFFECTPARAMS] [\-n NAME]
+file [file ...]
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.BI \-f \ FILE\fP,\fB \ \-\-conf_file \ FILE
+Specify config file.
+.TP
+.BI \-t \ TIMEFORMAT\fP,\fB \ \-\-TimeFormat
+Specify timeformat which is udes in data file (default:"[%Y/%m/%d %H:%M:%S]").
+.TP
+.BI \-x \ XMIN\fP,\fB \ \-\-Xmin \ XMIN
+Specify  minimal x value, can be int/float value or keyword:min (default:min).
+.TP
+.BI \-X \ XMAX\fP,\fB \ \-\-Xmax \ XMAX
+Specify  maximal x value, can be int/float value or keyword:max (default:max).
+.TP
+.BI \-y \ YMIN\fP,\fB \ \-\-Ymin \ YMIN
+Specify  minimal y value, can be int/float value or keyword:min (default:min).
+.TP
+.BI \-Y \ YMAX\fP,\fB \ \-\-Ymax \ YMAX
+Specify  maximal y value, can be int/float value or keyword:max (default:max).
+.TP
+.BI \-S \ SPEED\fP,\fB \ \-\-Speed \ SPEED
+Specify speed of animation (default:1).
+.TP
+.BI \-T \ TIME\fP,\fB \ \-\-Time \ TIME
+Specify duration of animations in seconds.
+.TP
+.BI \-F \ FPS\fP,\fB \ \-\-FPS \ FPS
+Specify FPS (frames per second) of animations (default:25).
+.TP
+.BI \-l \ LEGEND
+Specify legend (title) if animation
+.TP
+.BI \-g \ GNUPLOTPARAMS
+Specify parametrs which will be passed to gnuplot (only set parameters) any previous setting will be overdriven .
+.TP
+.BI \-e \ EFFECTPARAMS
+Specify parameters of effect which are : ColorMadness=true/false,ColorUp=color,ColorDown=color,ColorMiddle=color,
+color=[red,blue etc..], (parameters are separated with \(aq:\(aq)
+.TP
+.BI \-n \ NAME\fP,\fB \ \-\-Name \ NAME
+Specify name of file to be produced wtih extension (name.mp4)
+.TP
+.B \-v\fP,\fB  \-\-verbouse
+verbouse (default: false)
+\-h, \-\-help                                                                           show this help message and exit
+.UNINDENT
+.UNINDENT
+.SS Example of usage in command line:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./arg_test.py data \-T 10 \-F 25 \-t "[%Y/%m/%d %H:%M:%S]" \-Y max \-y min \-e ColorMadness=true \-X "[2009/05/12 07:29:00]" \-x "[2009/05/11 07:30:00]" \-n simple \-g tics
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Example of config file:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[Defaults]
+#This need to be here
+
+#This is signle line comment
+# Graph animation : Simple Effect
+# Example config file
+
+Timeformat [%Y/%m/%d %H:%M:%S]
+
+Xmin [2009/05/11 07:30:00]
+
+Xmax [2009/05/12 07:29:00]
+
+Ymin \-1
+
+Ymax 1
+
+Speed 20
+
+FPS 25
+
+Legend Test animation
+
+Gnuplotparams title grid
+
+Effectparams ColorUp=red:ColorDown=green
+
+Name test
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBExample of data file:\fP
+.INDENT 0.0
+.INDENT 3.5
+Data are separate with spaces , last collum is considered as Y\-value rest is dataformat as specified in \fITimeFormat\fP
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+[2009/05/11 07:30:00] 0
+[2009/05/11 07:31:00] 0.00999983333416666468
+[2009/05/11 07:32:00] 0.01999866669333307936
+[2009/05/11 07:33:00] 0.02999550020249566076
+[2009/05/11 07:34:00] 0.03998933418663415945
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Documentation
+.INDENT 0.0
+.TP
+.B animated_graph.check_fts(speed, fps, time)
+Check exclusivity of sped,fps,time.
+.INDENT 7.0
+.TP
+.B \fBArgs:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fIspeed (float)\fP: speed to check
+.sp
+\fIfps (float)\fP: fps to check
+.sp
+\fItime (float)\fP: time to check
+.UNINDENT
+.UNINDENT
+.sp
+Program halt when there is only one value passed from user.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B animated_graph.check_time(data, format)
+.INDENT 7.0
+.TP
+.B \fBArgs:\fP
+\fIdata (str)\fP: string to check_time
+.sp
+\fIformat (str)\fP: format to check
+.TP
+.B \fBReturns:\fP
+\fItime.strptime\fP\&. The return code of this function is time.strptime.
+If string cannot by coverted to time.strptime program halt.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B animated_graph.check_value(tocheck)
+.INDENT 7.0
+.TP
+.B \fBArgs:\fP
+\fItocheck (str)\fP: string to check_value
+.TP
+.B \fBReturns:\fP
+\fIfloat\fP\&. The return code of this function is string coverted to float value.
+If string cannot by coverted to float program halt.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B animated_graph.effect(effectpar)
+.INDENT 7.0
+.INDENT 3.5
+This function process data from effect parameters
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B \fBArgs:\fP
+\fIeffectpar (str)\fP: string to parse
+.UNINDENT
+.sp
+\fBReturns:\fP
+.INDENT 7.0
+.INDENT 3.5
+\fIstring ColorMadness\fP \- if effect ColorMadness should be applied
+.sp
+\fIstring ColorUp\fP     \-color of inverse bars above zero
+.sp
+\fIstring ColorDown\fP   \-color of inverse bars belowe zero
+.sp
+\fIstring ColorMiddle\fP \-color of actuall data
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B animated_graph.main()
+Generate animation from given data; return a video file
+.UNINDENT
+.INDENT 0.0
+.TP
+.B animated_graph.merge_files(file_data)
+Merge input files to one temporary file
+.INDENT 7.0
+.TP
+.B \fBArgs:\fP
+\fIfile_data (str)\fP: data from file
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.TP
+.B animated_graph.parse_effects(string)
+.INDENT 7.0
+.INDENT 3.5
+This is custom type for argparser
+.UNINDENT
+.UNINDENT
+.INDENT 7.0
+.TP
+.B \fBArgs:\fP
+\fIstring (str)\fP: string to parse
+.TP
+.B \fBReturns:\fP
+\fIstring\fP\&. The return code of this function is string
+If string cannot by coverted to time.strptime program halt.
+.TP
+.B \fBRaises:\fP
+\fIargparse.ArgumentTypeError\fP
+.UNINDENT
+.UNINDENT
+.SS Developer documentation
+.sp
+This document descibes all program opertions and tries to explain logic behind them.
+.SS Overview
+.sp
+Program firstly parse user input from line or from config file. In case when there are both, we save parameters from config file as defaults and overide them with paramaters from command line. For parsing we use standart libraries. \fIArgparser\fP handle parsing paramaters from command line and \fIConfigparser\fP parsing config files.
+.sp
+Functions \fIparse_effects\fP and \fIeffect\fP are used for additional parsing of effect paramaters in format described in manual.
+.sp
+After program identifies user input paramters we procced to read data file from file or url.
+All temp files will be located in directory created by \fItempfile.mkdtemp()\fP .
+.sp
+In case of multiple input files, program merge them to one temp file using function \fImerge_files(file_data)\fP\&. File data is list containing input files.
+This function is called even if there is only one input file.
+.sp
+Function then sort values in time using X data.
+.sp
+After that function tries to find duplicties. Duplicty is considered either X value with multiple Y values or multiple X values with same Y value.Function keeps only first occurences of X value and ignores others. After that function writes this values to temp file.
+.sp
+From now on program use only generated temp file for all operations.
+.sp
+We check file for bad Y values using function \fIcheck_value(tocheck)\fP
+which tries to convert string to float, if conversion fails function print error messaage and quit.Program assume that Y data are only in last collum (in line separated with spaces), processing more then one Y value per line is not supported.
+.sp
+Similarly using functuion \fIcheck_time(data,format)\fP program tries to convert string to time_struct using \fItime.strptime(string,format)\fP\&.
+In this case \fIformat\fP is either default time format or format provided by user.
+.sp
+If bad value ( wrong time format, wrong value ) is found , proram prints error message clean tempfiles and quits.
+.sp
+Now we need to calculate how many frames we have to plot.Program use default values if user didnt specified otherwise.
+.sp
+For our animation effect we draw all X values at once with diffrent Y values for each frame. For each frame we generate new configuration file for \fIGnuplot\fP\&. If user defined any paramaters for gnuplot we add them to configuration file.
+For actuall plotting there is hardcoced some logic for gnuplot, generally we differentiate 3 diffrent scenarios.
+Ploting only on positive Y axes , only on negative Y axes or on both at the same time. We need to know that for our inversion effect.
+.sp
+After we generated all frames with gnuplot, program calls \fIffmpeg\fP to create video in mp4 format. Program cleans all temp files and quits.
+.SS Data Inputs
+.sp
+Data inputs are single/multiple files or urls. They need to have two collums, first collum is considered as X value for ploting, in this case Time.In second collum they can be any number values.If duplicity is found, only first occurence is saved, rest are ignored.
+.SS Outputs
+.sp
+Output for this program is one video file in user defined location. If program ends with error message, no output file is generated. If file with output name already exist, program adds \fI_i\fP at the end. Where \fIi\fP is increasing sequence of integers.
+.SS Arguments
+.sp
+Program accepts several arguments from command line, detaily described in \fItutorial\fP, if there is more then one occurance of given argument, only last is used, rest of them are ignored. If some of the optional arguments are not defined by user, program use default values.
+.SS Configuration file
+.sp
+Program can proccess configuration file from user defined location. Arguments from command line have priority over arguments defined in configuration file.Program does not support more than one configuration file at the time.
+.INDENT 0.0
+.IP \(bu 2
+\fIgenindex\fP
+.IP \(bu 2
+\fImodindex\fP
+.IP \(bu 2
+\fIsearch\fP
+.UNINDENT
+.SH AUTHOR
+Lubos Hercka
+.SH COPYRIGHT
+2014, Lubos Hercka
+.\" Generated by docutils manpage writer.
+.

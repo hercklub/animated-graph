@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Animated_graph Tutorial &mdash; Animated_graph 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Animated_graph 0.0.1 documentation" href="index.html" />
+    <link rel="next" title="Documentation" href="code.html" />
+    <link rel="prev" title="Welcome to Animated_graph’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Animated_graph’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Animated_graph 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="animated-graph-tutorial">
+<span id="tutorial"></span><h1>Animated_graph Tutorial<a class="headerlink" href="#animated-graph-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This is short desription about how to use animeted_graph</p>
+<dl class="docutils">
+<dt><strong>usage</strong>: animated_graph [-h] [-f FILE] [-t TIMEFORMAT] [-x XMIN] [-X XMAX]</dt>
+<dd><blockquote class="first">
+<div>[-y YMIN] [-Y YMAX] [-S SPEED] [-T TIME] [-F FPS]
+[-l LEGEND] [-g GNUPLOTPARAMS [GNUPLOTPARAMS ...]]
+[-e EFFECTPARAMS] [-n NAME]
+file [file ...]</div></blockquote>
+<table class="last docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-f <var>FILE</var></span>, <span class="option">--conf_file <var>FILE</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify config file.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-t <var>TIMEFORMAT</var></span>, <span class="option">--TimeFormat</span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify timeformat which is udes in data file (default:&#8221;[%Y/%m/%d %H:%M:%S]&#8221;).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-x <var>XMIN</var></span>, <span class="option">--Xmin <var>XMIN</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify  minimal x value, can be int/float value or keyword:min (default:min).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-X <var>XMAX</var></span>, <span class="option">--Xmax <var>XMAX</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify  maximal x value, can be int/float value or keyword:max (default:max).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-y <var>YMIN</var></span>, <span class="option">--Ymin <var>YMIN</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify  minimal y value, can be int/float value or keyword:min (default:min).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-Y <var>YMAX</var></span>, <span class="option">--Ymax <var>YMAX</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify  maximal y value, can be int/float value or keyword:max (default:max).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-S <var>SPEED</var></span>, <span class="option">--Speed <var>SPEED</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify speed of animation (default:1).</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-T <var>TIME</var></span>, <span class="option">--Time <var>TIME</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify duration of animations in seconds.</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-F <var>FPS</var></span>, <span class="option">--FPS <var>FPS</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify FPS (frames per second) of animations (default:25).</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-l <var>LEGEND</var></span></kbd></td>
+<td>Specify legend (title) if animation</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-g <var>GNUPLOTPARAMS</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify parametrs which will be passed to gnuplot (only set parameters) any previous setting will be overdriven .</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-e <var>EFFECTPARAMS</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify parameters of effect which are : ColorMadness=true/false,ColorUp=color,ColorDown=color,ColorMiddle=color,
+color=[red,blue etc..], (parameters are separated with &#8216;:&#8217;)</td></tr>
+<tr><td class="option-group" colspan="2">
+<kbd><span class="option">-n <var>NAME</var></span>, <span class="option">--Name <var>NAME</var></span></kbd></td>
+</tr>
+<tr><td>&nbsp;</td><td>Specify name of file to be produced wtih extension (name.mp4)</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">-v</span>, <span class="option">--verbouse</span></kbd></td>
+<td>verbouse (default: false)
+-h, &#8211;help                                                                           show this help message and exit</td></tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<div class="section" id="example-of-usage-in-command-line">
+<h2>Example of usage in command line:<a class="headerlink" href="#example-of-usage-in-command-line" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>./arg_test.py data -T 10 -F 25 -t &quot;[%Y/%m/%d %H:%M:%S]&quot; -Y max -y min -e ColorMadness=true -X &quot;[2009/05/12 07:29:00]&quot; -x &quot;[2009/05/11 07:30:00]&quot; -n simple -g tics
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="example-of-config-file">
+<h2>Example of config file:<a class="headerlink" href="#example-of-config-file" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre>[Defaults]
+#This need to be here
+
+#This is signle line comment
+# Graph animation : Simple Effect
+# Example config file
+
+Timeformat [%Y/%m/%d %H:%M:%S]
+
+Xmin [2009/05/11 07:30:00]
+
+Xmax [2009/05/12 07:29:00]
+
+Ymin -1
+
+Ymax 1
+
+Speed 20
+
+FPS 25
+
+Legend Test animation
+
+Gnuplotparams title grid
+
+Effectparams ColorUp=red:ColorDown=green
+
+Name test
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Example of data file:</strong></p>
+<blockquote>
+<div>Data are separate with spaces , last collum is considered as Y-value rest is dataformat as specified in <em>TimeFormat</em></div></blockquote>
+<div class="highlight-none"><div class="highlight"><pre>[2009/05/11 07:30:00] 0
+[2009/05/11 07:31:00] 0.00999983333416666468
+[2009/05/11 07:32:00] 0.01999866669333307936
+[2009/05/11 07:33:00] 0.02999550020249566076
+[2009/05/11 07:34:00] 0.03998933418663415945
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Animated_graph Tutorial</a><ul>
+<li><a class="reference internal" href="#example-of-usage-in-command-line">Example of usage in command line:</a></li>
+<li><a class="reference internal" href="#example-of-config-file">Example of config file:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Animated_graph&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="code.html"
+                        title="next chapter">Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Animated_graph’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Animated_graph 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lubos Hercka.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

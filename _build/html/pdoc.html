@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developer documentation &mdash; Animated_graph 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Animated_graph 0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Documentation" href="code.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Animated_graph 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="developer-documentation">
+<h1>Developer documentation<a class="headerlink" href="#developer-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This document descibes all program opertions and tries to explain logic behind them.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Program firstly parse user input from line or from config file. In case when there are both, we save parameters from config file as defaults and overide them with paramaters from command line. For parsing we use standart libraries. <em>Argparser</em> handle parsing paramaters from command line and <em>Configparser</em> parsing config files.</p>
+<p>Functions <em>parse_effects</em> and <em>effect</em> are used for additional parsing of effect paramaters in format described in manual.</p>
+<p>After program identifies user input paramters we procced to read data file from file or url.
+All temp files will be located in directory created by <em>tempfile.mkdtemp()</em> .</p>
+<p>In case of multiple input files, program merge them to one temp file using function <em>merge_files(file_data)</em>. File data is list containing input files.
+This function is called even if there is only one input file.</p>
+<p>Function then sort values in time using X data.</p>
+<p>After that function tries to find duplicties. Duplicty is considered either X value with multiple Y values or multiple X values with same Y value.Function keeps only first occurences of X value and ignores others. After that function writes this values to temp file.</p>
+<p>From now on program use only generated temp file for all operations.</p>
+<p>We check file for bad Y values using function <em>check_value(tocheck)</em>
+which tries to convert string to float, if conversion fails function print error messaage and quits. Program assume that Y data are only in last collum (in line separated with spaces), processing more then one Y value per line is not supported.</p>
+<p>Similarly using functuion <em>check_time(data,format)</em> program tries to convert string to time_struct using <em>time.strptime(string,format)</em>.
+In this case <em>format</em> is either default time format or format provided by user.</p>
+<p>If bad value (wrong time format, wrong value) is found, proram prints error message clean tempfiles and quits.</p>
+<p>Now we need to calculate how many frames we have to plot.Program use default values if user did not specified otherwise.</p>
+<p>For our animation effect we draw all X values at once with diffrent Y values for each frame. For each frame we generate new configuration file for <em>Gnuplot</em>. If user defined any paramaters for gnuplot we add them to configuration file.
+For actuall plotting there is hardcoced some logic for gnuplot, generally we differentiate 3 diffrent scenarios.
+Ploting only on positive Y axes , only on negative Y axes or on both at the same time. We need to know that for our inversion effect.</p>
+<p>After we generated all frames with gnuplot, program calls <em>ffmpeg</em> to create video in mp4 format. Program cleans all temp files and quits.</p>
+</div>
+<div class="section" id="data-inputs">
+<h2>Data Inputs<a class="headerlink" href="#data-inputs" title="Permalink to this headline">¶</a></h2>
+<p>Data inputs are single/multiple files or urls. They need to have two collums, first collum is considered as X value for ploting, in this case Time.In second collum they can be any number values.If duplicity is found, only first occurence is saved, rest are ignored.</p>
+</div>
+<div class="section" id="outputs">
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h2>
+<p>Output for this program is one video file in user defined location. If program ends with error message, no output file is generated. If file with output name already exist, program adds <em>_i</em> at the end. Where <em>i</em> is increasing sequence of integers.</p>
+</div>
+<div class="section" id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p>Program accepts several arguments from command line, detaily described in <a class="reference internal" href="tutorial.html#tutorial"><em>Animated_graph Tutorial</em></a>, if there is more then one occurance of given argument, only last is used, rest of them are ignored. If some of the optional arguments are not defined by user, program use default values.</p>
+</div>
+<div class="section" id="configuration-file">
+<h2>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h2>
+<p>Program can proccess configuration file from user defined location. Arguments from command line have priority over arguments defined in configuration file.Program does not support more than one configuration file at the time.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Developer documentation</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#data-inputs">Data Inputs</a></li>
+<li><a class="reference internal" href="#outputs">Outputs</a></li>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+<li><a class="reference internal" href="#configuration-file">Configuration file</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="code.html"
+                        title="previous chapter">Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pdoc.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">Animated_graph 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lubos Hercka.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
