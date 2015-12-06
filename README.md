@@ -1,9 +1,6 @@
 # animated-graph
+ Let you create animated data graph.
 
-
-
-Animated_graph Tutorial
-***********************
 
 This is short desription about how to use animeted_graph
 
@@ -15,38 +12,35 @@ This is short desription about how to use animeted_graph
 
 
 
-  **-f FILE, --conf_file FILE**              Specify config file.
+  -f FILE, --conf_file FILE               Specify config file.
 
-  **-t TIMEFORMAT, --TimeFormat**			  Specify timeformat which is udes in data file (default:"[%Y/%m/%d %H:%M:%S]").
+  -t TIMEFORMAT, --TimeFormat 			  Specify timeformat which is udes in data file (default:"[%Y/%m/%d %H:%M:%S]").
                         
- **-x XMIN, --Xmin XMIN**			  Specify  minimal x value, 
+  -x XMIN, --Xmin XMIN  				  Specify  minimal x value, 
   can be int/float value or keyword:min (default:min).
 
-  **-X XMAX, --Xmax XMAX  **				  Specify  maximal x value, can be int/float value or keyword:max (default:max).
+  -X XMAX, --Xmax XMAX  				  Specify  maximal x value, can be int/float value or keyword:max (default:max).
 
-  **-y YMIN, --Ymin YMIN ** 				  Specify  minimal y value, can be int/float value or keyword:min (default:min).
+  -y YMIN, --Ymin YMIN  				  Specify  minimal y value, can be int/float value or keyword:min (default:min).
 
-  **-Y YMAX, --Ymax YMAX ** 				  Specify  maximal y value, can be int/float value or keyword:max (default:max).
+  -Y YMAX, --Ymax YMAX  				  Specify  maximal y value, can be int/float value or keyword:max (default:max).
 
-  **-S SPEED, --Speed SPEED **				  Specify speed of animation (default:1).                     
+  -S SPEED, --Speed SPEED 				  Specify speed of animation (default:1).                     
 
-  **-T TIME, --Time TIME  **				  Specify duration of animations in seconds.
+  -T TIME, --Time TIME  				  Specify duration of animations in seconds.
 
-  **-F FPS, --FPS FPS  **  					  Specify FPS (frames per second) of animations (default:25).
+  -F FPS, --FPS FPS    					  Specify FPS (frames per second) of animations (default:25).
 
-  **-l LEGEND   **          				  Specify legend (title) if animation
+  -l LEGEND             				  Specify legend (title) if animation
 
-  **-g GNUPLOTPARAMS 	**					  Specify parametrs which will be passed to gnuplot (only set parameters) any previous setting will be overdriven .
+  -g GNUPLOTPARAMS 						  Specify parametrs which will be passed to gnuplot (only set parameters) any previous setting will be overdriven .
 
                         
-  **-e EFFECTPARAMS  **     				  Specify parameters of effect which are : ColorMadness=true/false,ColorUp=color,ColorDown=color,ColorMiddle=color,
+  -e EFFECTPARAMS       				  Specify parameters of effect which are : ColorMadness=true/false,ColorUp=color,ColorDown=color,ColorMiddle=color,
   										  color=[red,blue etc..], (parameters are separated with ':')
-  **-n NAME, --Name NAME  **				  Specify name of file to be produced wtih extension (name.mp4)
-
-  **-v, --verbouse    **                        verbouse (default: false)
-
-    **-h, --help  **          				 				 show this help message and exit
-
+  -n NAME, --Name NAME  				  Specify name of file to be produced wtih extension (name.mp4)
+  -v, --verbouse                            verbouse (default: false)
+    -h, --help            				 				 show this help message and exit
 
 Example of usage in command line:
 =================================
@@ -66,7 +60,6 @@ Example of config file:
 
 
   [Defaults]
-
   #This need to be here
 
   #This is signle line comment
